@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZEXISTEY Verify</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Orbitron;
+background:linear-gradient(135deg,#060b1a,#020617);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1542751371-adc38448a05e") center/cover;
+opacity:.15;
+z-index:-1;
+}
+
+.card{
+width:90%;
+max-width:520px;
+background:rgba(20,20,30,.85);
+border-radius:15px;
+padding:20px;
+box-shadow:0 0 30px #000;
+}
+
+.guild{
+display:flex;
+align-items:center;
+gap:15px;
+border-bottom:1px solid #444;
+padding-bottom:15px;
+}
+
+.guild img{
+width:70px;
+height:70px;
+border-radius:10px;
+border:2px solid gold;
+}
+
+.uid{
+font-size:22px;
+color:gold;
+}
+
+.info{
+margin-top:10px;
+font-size:14px;
+color:#aaa;
+}
+
+.task{
+margin-top:20px;
+padding:12px;
+background:#000;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border:1px solid #333;
+}
+
+.task button{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+background:linear-gradient(90deg,#00eaff,#b700ff);
+color:white;
+}
+
+.status{
+font-size:18px;
+}
+
+.upload{
+margin-top:20px;
+}
+
+input[type=file]{
+width:100%;
+padding:10px;
+background:#000;
+color:white;
+border-radius:8px;
+border:1px solid #555;
+}
+
+.mainBtn{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00eaff,#b700ff);
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="guild">
+<img src="https://i.ibb.co/2fbBHsn/elite-shooter.png">
+
+<div>
+<div class="uid" id="uidText">Loading...</div>
+<div class="info" id="infoText"></div>
+</div>
+</div>
+
+<!-- TASK 1 -->
+<div class="task">
+<span>👍 Like & Comment Video</span>
+<div>
+<span id="task1Status" class="status">⏳</span>
+<button onclick="startTask(1)">OPEN</button>
+</div>
+</div>
+
+<!-- TASK 2 -->
+<div class="task">
+<span>🔔 Subscribe Channel</span>
+<div>
+<span id="task2Status" class="status">⏳</span>
+<button onclick="startTask(2)">OPEN</button>
+</div>
+</div>
+
+<!-- FILE -->
+<div class="upload">
+<label>Upload BOT FILE </label>
+<input type="file" id="fileInput" accept="image/*">
+</div>
+
+<button class="mainBtn" onclick="checkAll()">NEXT</button>
+
+</div>
+
+<script>
+
+/* LOAD USER DATA */
+const uid = localStorage.getItem("guildUID");
+const device = localStorage.getItem("device");
+const country = localStorage.getItem("country");
+
+document.getElementById("uidText").innerText = uid;
+document.getElementById("infoText").innerText =
+"Region: "+country+" | Device: "+device+" | 1 Bots";
+
+/* TASK STATES */
+let task1=false;
+let task2=false;
+
+/* OPEN LINKS */
+function startTask(num){
+
+if(num===1){
+window.open("https://youtu.be/ZPo4L8YPfsw?si=APGKAkRnzxMBoZxr","_blank");
+simulateVerify(1);
+}
+
+if(num===2){
+window.open("https://youtube.com/@firezexiyt?si=LQ8VzVln8P0GCB4V","_blank");
+simulateVerify(2);
+}
+
+}
+
+/* VERIFY ANIMATION */
+function simulateVerify(task){
+
+let status=document.getElementById("task"+task+"Status");
+status.innerText="🔄";
+
+setTimeout(()=>{
+status.innerText="✅";
+if(task===1) task1=true;
+if(task===2) task2=true;
+},2000);
+
+}
+
+/* FINAL CHECK */
+function checkAll(){
+
+if(!task1 || !task2){
+alert("Complete all tasks first");
+return;
+}
+
+const fileInput=document.getElementById("fileInput");
+
+if(fileInput.files.length===0){
+alert("Upload bot image first");
+return;
+}
+
+const file=fileInput.files[0];
+
+if(file.name!=="bot.png"){
+alert("Only file name 'bot.png' allowed");
+return;
+}
+
+window.location.href="next.html";
+
+}
+
+</script>
+
+</body>
+</html>
