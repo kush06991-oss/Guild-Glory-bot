@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZEXISTEY AI System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#02030a;
+color:#00eaff;
+font-family:'Share Tech Mono',monospace;
+overflow:hidden;
+}
+
+/* CYBER GRID BACKGROUND */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+linear-gradient(#00eaff11 1px, transparent 1px),
+linear-gradient(90deg,#00eaff11 1px, transparent 1px);
+background-size:40px 40px;
+animation:gridMove 8s linear infinite;
+z-index:-2;
+}
+
+@keyframes gridMove{
+from{transform:translateY(0);}
+to{transform:translateY(40px);}
+}
+
+/* SCAN EFFECT */
+.scan{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(
+transparent,
+rgba(0,234,255,0.05),
+transparent
+);
+animation:scan 4s linear infinite;
+pointer-events:none;
+}
+
+@keyframes scan{
+0%{transform:translateY(-100%);}
+100%{transform:translateY(100%);}
+}
+
+/* CENTER PANEL */
+.container{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* BOT ICON */
+.bot{
+width:110px;
+height:110px;
+border-radius:50%;
+border:2px solid #00eaff;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:40px;
+box-shadow:0 0 25px #00eaff;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 10px #00eaff;}
+50%{box-shadow:0 0 35px #b700ff;}
+100%{box-shadow:0 0 10px #00eaff;}
+}
+
+/* TITLE */
+.title{
+margin-top:25px;
+font-size:48px;
+font-family:'Orbitron';
+background:linear-gradient(90deg,#00eaff,#b700ff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* TERMINAL TEXT */
+.terminal{
+margin-top:30px;
+font-size:18px;
+color:#00ff9f;
+height:30px;
+}
+
+/* STATUS BOX */
+.status{
+margin-top:30px;
+padding:15px 30px;
+border:1px solid #00eaff55;
+background:#000814;
+border-radius:10px;
+box-shadow:0 0 15px #00eaff33 inset;
+}
+
+/* ENTER BUTTON */
+.enter{
+margin-top:40px;
+padding:14px 45px;
+border:none;
+background:linear-gradient(90deg,#00eaff,#b700ff);
+color:white;
+font-size:18px;
+border-radius:12px;
+cursor:pointer;
+opacity:0;
+transition:0.4s;
+}
+
+.enter:hover{
+transform:scale(1.07);
+box-shadow:0 0 20px #00eaff;
+}
+
+/* FOOTER */
+.footer{
+position:absolute;
+bottom:20px;
+color:#777;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scan"></div>
+
+<div class="container">
+
+<div class="bot">🤖</div>
+
+<div class="title">ZEXISTEY AI</div>
+
+<div class="terminal" id="typing"></div>
+
+<div class="status">
+SYSTEM STATUS: INITIALIZING...
+</div>
+
+<button class="enter" id="enterBtn" onclick="enterSite()">
+ACCESS SYSTEM
+</button>
+
+</div>
+
+<div class="footer">                                               ZEXISTEY Artificial Gaming Intelligence v1.0 📡
+</div>
+
+<script>
+
+/* TYPING EFFECT */
+const text = [
+"Booting ZEXISTEY AI Core...",
+"Loading Gaming Modules...",
+"Connecting Global Servers...",
+"System Ready ✔"
+];
+
+let line = 0;
+let char = 0;
+
+function type(){
+if(line < text.length){
+document.getElementById("typing").textContent =
+text[line].substring(0,char++);
+
+if(char > text[line].length){
+line++;
+char = 0;
+setTimeout(type,700);
+}else{
+setTimeout(type,40);
+}
+}else{
+document.querySelector(".status").innerHTML =
+"SYSTEM STATUS: ONLINE";
+document.getElementById("enterBtn").style.opacity="1";
+}
+}
+
+type();
+
+function enterSite(){
+window.location.href="home.html";
+}
+
+</script>
+
+</body>
+</html>
