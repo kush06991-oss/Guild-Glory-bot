@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZEXISTEY Final System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+font-family:'Share Tech Mono',monospace;
+background:linear-gradient(135deg,#020617,#060b1a,#020617);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* BG */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1518770660439-4636190af475") center/cover;
+opacity:.15;
+z-index:-1;
+}
+
+/* HEADER */
+.topHeader{
+position:absolute;
+top:15px;
+width:100%;
+text-align:center;
+font-family:'Orbitron';
+font-size:22px;
+letter-spacing:2px;
+color:#00eaff;
+text-shadow:0 0 15px cyan;
+}
+
+/* CARD */
+.card{
+width:90%;
+max-width:520px;
+background:rgba(10,15,35,.85);
+padding:35px;
+border-radius:15px;
+border:1px solid #00eaff44;
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(0,255,255,0.25);
+text-align:center;
+animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* SUCCESS TEXT */
+.success{
+font-family:'Orbitron';
+font-size:22px;
+margin-bottom:10px;
+background:linear-gradient(90deg,#00eaff,#b700ff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.wait{
+color:#00ff9f;
+margin-bottom:15px;
+}
+
+/* BOT STATUS PANEL */
+.statusBox{
+background:#020617;
+border-radius:12px;
+padding:15px;
+margin:15px 0;
+border:1px solid #00eaff33;
+}
+
+.stat{
+display:flex;
+justify-content:space-between;
+margin:8px 0;
+font-size:15px;
+}
+
+.live{color:#00ff9f;}
+.busy{color:#ffcc00;}
+
+/* TAGLINE */
+.tagline{
+margin-top:10px;
+font-size:14px;
+color:#00eaff;
+height:20px;
+}
+
+/* BUTTONS */
+.btn{
+display:block;
+width:100%;
+padding:14px;
+margin-top:12px;
+border-radius:10px;
+text-decoration:none;
+font-family:'Orbitron';
+font-size:16px;
+color:white;
+transition:.3s;
+}
+
+.youtube{
+background:linear-gradient(90deg,#ff0000,#ff4d4d);
+}
+
+.telegram{
+background:linear-gradient(90deg,#0088cc,#00c6ff);
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px cyan;
+}
+
+/* FOOTER */
+.footer{
+position:absolute;
+bottom:15px;
+width:100%;
+text-align:center;
+font-size:13px;
+color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topHeader">ZEXISTEY BOT</div>
+
+<div class="card">
+
+<div class="success">
+Guild Glory Bot Connecting Successful
+</div>
+
+<div class="wait">Please Wait...</div>
+
+<!-- BOT STATUS -->
+<div class="statusBox">
+
+<div class="stat">
+<span>🤖 Live Bots</span>
+<span class="live" id="liveBots">0</span>
+</div>
+
+<div class="stat">
+<span>⚙ Busy Bots</span>
+<span class="busy" id="busyBots">0</span>
+</div>
+
+</div>
+
+<!-- TAGLINE -->
+<div class="tagline" id="taglineText">
+Initializing AI Network...
+</div>
+
+<!-- BUTTONS -->
+<a class="btn youtube"
+href="https://youtube.com/@zexistey?si=kGOhR3q11_qbNYg_"
+target="_blank">
+▶ Visit YouTube Channel
+</a>
+
+<a class="btn telegram"
+href="https://t.me/Realzexi"
+target="_blank">
+✈ Join Telegram Channel
+</a>
+
+</div>
+
+<div class="footer">
+ZEXISTEY AI SYSTEM • Secure Connection Established
+</div>
+
+<script>
+
+/* LIVE BOT COUNTER */
+const live=document.getElementById("liveBots");
+const busy=document.getElementById("busyBots");
+
+let liveCount=120;
+let busyCount=35;
+
+setInterval(()=>{
+liveCount += Math.floor(Math.random()*5-2);
+busyCount += Math.floor(Math.random()*5-2);
+
+if(liveCount<100) liveCount=100;
+if(busyCount<20) busyCount=20;
+
+live.innerText=liveCount;
+busy.innerText=busyCount;
+
+},1500);
+
+/* TAGLINES ROTATION */
+const taglines=[
+"AI Bots Synchronizing Secure Network...",
+"Encrypted Guild Connection Active...",
+"Next-Gen Automation System Running..."
+];
+
+let i=0;
+const taglineText=document.getElementById("taglineText");
+
+setInterval(()=>{
+i=(i+1)%taglines.length;
+taglineText.innerText=taglines[i];
+},3000);
+
+</script>
+
+</body>
+</html>
