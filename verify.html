@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEXISTEY Launcher</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(135deg,#060b1a,#0a0f2e,#020617);
+overflow:hidden;
+color:white;
+}
+
+/* Background Image */
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1542751371-adc38448a05e") center/cover;
+opacity:0.15;
+z-index:-1;
+}
+
+/* Main Box */
+
+.launcher{
+text-align:center;
+padding:40px;
+width:90%;
+max-width:420px;
+background:rgba(10,15,35,0.85);
+border-radius:20px;
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(0,255,255,0.3);
+}
+
+/* Bot Image */
+
+.bot{
+width:140px;
+margin-bottom:15px;
+filter:drop-shadow(0 0 20px cyan);
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+h1{
+font-size:24px;
+background:linear-gradient(90deg,#00f7ff,#ff00ea,#00ff88);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:10px;
+}
+
+.status{
+font-size:14px;
+color:#aaa;
+margin-bottom:20px;
+}
+
+/* Progress Bar */
+
+.progress-box{
+width:100%;
+height:12px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00f7ff,#ff00ea,#00ff88);
+animation:load 15s linear forwards;
+}
+
+@keyframes load{
+from{width:0%;}
+to{width:100%;}
+}
+
+.loading-img{
+width:60px;
+margin-top:20px;
+animation:spin 2s linear infinite;
+filter:drop-shadow(0 0 10px #00f7ff);
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+.note{
+margin-top:15px;
+font-size:12px;
+color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="launcher">
+
+<!-- BOT IMAGE -->
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" class="bot">
+
+<h1>ZEXISTEY BOT</h1>
+
+<div class="status">
+Initializing Secure Gaming Environment...
+</div>
+
+<div class="progress-box">
+<div class="progress"></div>
+</div>
+
+<!-- LOADING IMAGE -->
+<img src="https://cdn-icons-png.flaticon.com/512/189/189792.png" class="loading-img">
+
+<div class="note">
+Launching system... Please wait
+</div>
+
+</div>
+
+<script>
+
+/* 15 second redirect */
+
+setTimeout(function(){
+window.location.href="final.html"; 
+},15000);
+
+</script>
+
+</body>
+</html>
